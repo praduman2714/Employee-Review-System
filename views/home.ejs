@@ -3,10 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/home.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ERS</title>
 </head>
 <body>
-    <h1>You are in!</h1>
+    <div class="outerDiv">    
+        <div class="adminPass">
+            <form action="">
+                <input name="admin_password" type="password" placeholder="Password">
+                <button type="submit" class="submitHomeButton"> Enter as Admin</button>
+            </form>
+        </div>
+
+
+        <div class="home-box">
+            <i class="text-colr">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat in perferendis consequatur corporis, dolor reprehenderit! Magni hic id iure distinctio delectus quod doloremque sit consequatur nam, nisi incidunt illo sequi recusandae consequuntur aliquid iste modi sapiente. Veritatis aspernatur repellendus nam quo, dolorum vel facere sunt inventore quidem? Qui, cum neque.</i>
+            <hr>
+        </div>
+
+        <div class="home-box">
+            <h5 class="text-colr">Give Review to other employee
+                <br>
+                <small class="small-text text-colr"><i>This task is assigned by Admin</i></small>
+            </h5>
+
+            <div class="reviewBox">
+                <div class="outerBox">
+                    <h6>
+                        To : Praduman
+                    </h6>
+                    <div class="innerBox">
+                        <form action="">
+                            <textarea class="formClass" placeholder="Review, here !" name="newReview" rows="5">
+
+                            </textarea>
+                            <br>
+                            <button type="submit" class="submitHomeButton"> Submit </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-box">
+            <h5 class="text-colr">My Reviews by Other employee*</h5>
+            <div class="reviewBox">
+
+            
+                <div class="card-out">
+                    <div class="in-card">
+                        <h5 class="cls-txt">Message : Nyce</h5>
+                        <p class="cls-txt">From : Praduman</p>
+                        
+                    </div>
+                </div>
+            
+
+        </div>
+
+    </div>
+
 </body>
 </html>

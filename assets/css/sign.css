@@ -1,3 +1,6 @@
+*{
+    /* background-image: url(../images/signBack.jpg); */
+}
 .mainContainer{
     display: flex;
     flex-direction: row;

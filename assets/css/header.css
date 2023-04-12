@@ -1,0 +1,51 @@
+/* The below css is for header of the page, the header of the page is going to remain constant, only
+ the body is going to chagne.
+  */
+
+  /* Styling for navBar, I have made nav Bar as flex, and all the element inside this navBar is going to 
+  in row wise */
+  .navBar{
+    background-color: rgba(23, 209, 178, 0.868);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* color: black; */
+    /* position: relative; */
+}
+/* These styling are for anchor tag in navBar */
+.nameOfApp a{
+    font-size: 40px;
+    text-decoration: none;
+    color: black;
+}
+
+/* for the name of users */
+.nameOfUser{
+    font-size: 30px;
+
+}
+
+/* Thesse styling are for logOut, button which is present on the navBar */
+.logOut a{
+    font-size: 30px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.noUser ul{
+    display: flex;
+    margin: 10px;
+    justify-content: space-between;
+}
+
+.noUser li{
+    list-style: none;
+    font-size: 25px;
+    padding-left: 10px;
+}
+
+.noUser li a{
+    text-decoration: none;
+    color: black;
+}
