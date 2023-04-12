@@ -5,6 +5,9 @@ const app = express();
 // requiring express-ejs-layout, it will help in rendering the page.
 const expressLayout = require('express-ejs-layouts');
 
+// requring DataBase
+const db = require('./config/mongoose');
+
 const bodyParser = require('body-parser');
 
 // For getting the output from req.body(it will parse the upcoming request to String or Arrays).
