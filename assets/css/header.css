@@ -49,3 +49,6 @@
     text-decoration: none;
     color: black;
 }
+.logOut small{
+    font-size: 20px;
+}

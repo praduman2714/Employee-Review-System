@@ -8,13 +8,17 @@
     <title>ERS</title>
 </head>
 <body>
-    <div class="outerDiv">    
-        <div class="adminPass">
-            <form action="">
-                <input name="admin_password" type="password" placeholder="Password">
-                <button type="submit" class="submitHomeButton"> Enter as Admin</button>
-            </form>
-        </div>
+    <%if(locals.user){%>
+        <div class="outerDiv">    
+            <% if(locals.user.isAdmin){ %>
+                <div class="adminPass">
+                    <form action="">
+                        <input name="admin_password" type="password" placeholder="Password">
+                        <button type="submit" class="submitHomeButton"> Enter as Admin</button>
+                    </form>
+                </div>
+            <%}%>    
+        
 
 
         <div class="home-box">
@@ -63,6 +67,7 @@
         </div>
 
     </div>
+    <%}%>
 
 </body>
 </html>

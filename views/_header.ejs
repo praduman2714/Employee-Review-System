@@ -4,14 +4,24 @@
     <div class="navBar">
         <div class="nameOfApp"><a href="/">Habit Tracker</a></div>
         <% if (locals.user){ %>
-            <div class="nameOfUser">Welcome <%= locals.user.name%>  </div>
-            <div class="logOut"> <a href="/users/sign-out" > LogOut </a> </div>
+            <%if(locals.user.isAdmin){%>
+                <!-- <div class="nameOfUser">Welcome <%= locals.user.name%>  </div> -->
+                <div class="logOut"> 
+                    <a href=""> <small>Assign Work</small> </a>
+                    <a href=""> <small>Employess</small> </a>
+                    <a href=""> <small> Add Employee </small> </a>
+                    <a href="/users/sign-out" > LogOut </a> 
+                </div>
+            <%}else{%>    
+                <div class="nameOfUser">Welcome <%= locals.user.name%>  </div>
+                <div class="logOut"> <a href="/users/sign-out" > LogOut </a> </div>
+            <%}%>
             
         <%} else { %>
             <div class="noUser">
                 <ul>
                     <li> <a href="/users/sign-in"> Sign-In </a> </li>
-                    <li>  <a href="/users/signUp"> Sign Up </a> </li>
+                    <li>  <a href="/users/sign-up"> Sign Up </a> </li>
                 </ul>
             </div>
         
