@@ -33,20 +33,24 @@
             </h5>
 
             <div class="reviewBox">
-                <div class="outerBox">
-                    <h6>
-                        To : Praduman
-                    </h6>
-                    <div class="innerBox">
-                        <form action="">
-                            <textarea class="formClass" placeholder="Review, here !" name="newReview" rows="5">
-
-                            </textarea>
-                            <br>
-                            <button type="submit" class="submitHomeButton"> Submit </button>
-                        </form>
-                    </div>
-                </div>
+                <% for(let i = 0 ;i<recipent.length ; i++ ) {%>
+                    <%if(recipent[i] != null) {%>
+                        <div class="outerBox">
+                            <h6>
+                                To : <%= recipent[i].name%>
+                            </h6>
+                            <div class="innerBox">
+                                <form action="/reviews/newReview/<%= recipent[i]._id %>" method="get">
+                                    <textarea class="formClass" placeholder="Review, here !" name="newReview" rows="5">
+        
+                                    </textarea>
+                                    <br>
+                                    <button type="submit" class="submitHomeButton"> Submit </button>
+                                </form>
+                            </div>
+                        </div>
+                    <%}%>
+                <%}%>   
             </div>
         </div>
 
@@ -56,11 +60,13 @@
 
             
                 <div class="card-out">
-                    <div class="in-card">
-                        <h5 class="cls-txt">Message : Nyce</h5>
-                        <p class="cls-txt">From : Praduman</p>
-                        
-                    </div>
+                    <% for(let review of reviews ) {%>
+                        <div class="in-card">
+                            <h5 class="cls-txt">Message : <%= review.content %> </h5>
+                            <p class="cls-txt">From : <%= review.name %> </p>
+                            
+                        </div>
+                    <%}%>    
                 </div>
             
 
