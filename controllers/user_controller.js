@@ -1,7 +1,9 @@
 const User = require('../models/user');
 
 module.exports.signIn = function(req, res){
-    return res.render('sign_in');
+    return res.render('sign_in', {
+        title : 'ERS | Sign-In'
+    });
 }
 
 module.exports.createSession = async function(req, res){
@@ -11,7 +13,9 @@ module.exports.createSession = async function(req, res){
 }
 
 module.exports.signUp = function(req, res){
-    return res.render('sign_up');
+    return res.render('sign_up', {
+        title : 'ERS | SignUp'
+    });
 }
 
 module.exports.create = async function(req, res){
@@ -89,4 +93,21 @@ module.exports.addEmployeee = async function(req, res){
         return res.redirect('/admin/view-employee');
     }
     return res.redirect('back');
+}
+
+module.exports.makeAdmin = async function(req, res){
+    try {
+        if (req.body.admin_password == 'monkey') {
+            let user = await User.findById(req.user.id );
+            user.isAdmin = true;
+            user.save();
+            return res.redirect('back');
+        } else {
+            return res.redirect('back');
+        }
+        
+    } catch (error) {
+        console.log('Error', error);
+        return;
+    }
 }

@@ -21,5 +21,7 @@ router.post('/forgetPasswordLink' , userController.forgetPasswordLink);
 
 router.post('/addEmployee', userController.addEmployeee);
 
+router.post('/makeAdmin', userController.makeAdmin);
+
 
 module.exports = router;

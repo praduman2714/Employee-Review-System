@@ -22,9 +22,15 @@
               <td> <%= employes[i].email%> </td>
               <td> <%= employes[i].password%> </td>
               <td> <%= employes[i].isAdmin%> </td>
-              <td> 
+              <% if(locals.user.id != employes[i]._id) {%>
+                <td> 
                   <a href="/admin/deleteEmployee/<%= employes[i]._id %>" class="btn btn-md">Delete</a>
               </td>
+              <%}else{%>
+                <td>
+                  <a href="" class="btn btn-md">Delete</a>
+                </td>
+              <%}%> 
             </tr>  
           <%}%>
           

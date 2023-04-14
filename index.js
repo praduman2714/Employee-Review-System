@@ -15,6 +15,9 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local');
 
+// requiring mongo-store, so that we can use the existing user even after server start
+const MongoStore = require('connect-mongo');
+
 // they are used for showing action notifications
 const flash = require('connect-flash'); 
 const flashMiddleWare = require('./config/flashMiddleware');
@@ -30,17 +33,25 @@ app.set('views','./views');
 
 app.use(expressLayout);
 
-//mongo store is used to store the session cookie
+// mongo store is used to store the session cookie in the db 
 app.use(session({
-    name: 'ERS',
-    // TODO change the secret before deployment in production mode
+    name: "ERS",
+    // change secret during before deployment in production 
     secret: "employeeReviewSystem",
     saveUninitialized: false,
     resave: false,
     cookie: {
         maxAge: (1000 * 60 * 100)
-    }
-}));
+    },
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://0.0.0.0/employeReviewSystem',
+        autoRemove: 'disabled'
+    },
+        (err) => {
+            console.log(err || 'connect-mongo setup ok');
+        }
+    )
+}))
 
 // Using passport
 app.use(passport.initialize());
