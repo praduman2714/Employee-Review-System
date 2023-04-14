@@ -45,6 +45,7 @@ module.exports.newReview = async (req, res) => {
                 }
             } else {
                 console.log("user is not loggin");
+                req.flash('error' , "Please LogiN yourself !");
                 return res.redirect("/users/sign-in");
             }
         }

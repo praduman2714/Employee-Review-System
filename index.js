@@ -9,10 +9,15 @@ const expressLayout = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 
 const bodyParser = require('body-parser');
+
 // Creating session
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local');
+
+// they are used for showing action notifications
+const flash = require('connect-flash'); 
+const flashMiddleWare = require('./config/flashMiddleware');
 
 // For getting the output from req.body(it will parse the upcoming request to String or Arrays).
 app.use(bodyParser.urlencoded({extended:false}));
@@ -27,9 +32,9 @@ app.use(expressLayout);
 
 //mongo store is used to store the session cookie
 app.use(session({
-    name: 'habitTracker',
+    name: 'ERS',
     // TODO change the secret before deployment in production mode
-    secret: "habitTracker",
+    secret: "employeeReviewSystem",
     saveUninitialized: false,
     resave: false,
     cookie: {
@@ -41,6 +46,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+
+// Using Connect flash
+app.use(flash());
+app.use(flashMiddleWare.setFlash);
 
 // setting up the router, following MVC structure.
 app.use('/' , require('./routes/index'));

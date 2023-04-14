@@ -6,6 +6,7 @@ module.exports.signIn = function(req, res){
 
 module.exports.createSession = async function(req, res){
     // console.log(req.body);
+    req.flash('success', 'You are logged In');
     return res.redirect('/');
 }
 
@@ -16,6 +17,7 @@ module.exports.signUp = function(req, res){
 module.exports.create = async function(req, res){
     if(req.body.password != req.body.confirmPassword){
         //disply flash messages
+        req.flash('error' , 'Password should be equal to Confirm Password');
         return res.redirect('back');
     }
     let user = await User.findOne({email : req.body.email});
@@ -26,6 +28,7 @@ module.exports.create = async function(req, res){
             password : req.body.password,
             isAdmin : false
         });
+        
         return res.redirect('/users/sign-in');
     }
     return res.redirect('back');
@@ -36,6 +39,7 @@ module.exports.destroySession = function (req, res, done){
         if(err){
             return done(err);
         }
+        req.flash('success' , 'Logged Out Sucessfully !');
         return res.redirect('/users/sign-in');
     });
     
@@ -57,10 +61,32 @@ module.exports.forgetPasswordLink = async function(req, res){
         return res.redirect('/users/signUp');
     }
     if(req.body.password == req.body.confirmPassword){
+        req.flash('success' , 'Password Changed :)');
         user.password = req.body.password;
         await user.updateOne({password : req.body.password});
         return res.redirect('/users/sign-in');
     }
     return res.redirect('back');
 
+}
+
+
+module.exports.addEmployeee = async function(req, res){
+    if(req.body.password != req.body.confirmPassword){
+        //disply flash messages
+        req.flash('error' , 'Password should be equal to Confirm Password');
+        return res.redirect('back');
+    }
+    let user = await User.findOne({email : req.body.email});
+    if(!user){
+        await User.create({
+            name : req.body.name,
+            email : req.body.email,
+            password : req.body.password,
+            isAdmin : false
+        });
+        
+        return res.redirect('/admin/view-employee');
+    }
+    return res.redirect('back');
 }

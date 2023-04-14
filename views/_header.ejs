@@ -2,14 +2,14 @@
 <link rel="stylesheet" href="/css/header.css">
 <div>
     <div class="navBar">
-        <div class="nameOfApp"><a href="/">Habit Tracker</a></div>
+        <div class="nameOfApp"><a href="/">Employee Review System</a></div>
         <% if (locals.user){ %>
             <%if(locals.user.isAdmin){%>
-                <!-- <div class="nameOfUser">Welcome <%= locals.user.name%>  </div> -->
+                <div class="nameOfUser">Welcome <%= locals.user.name%>  </div>
                 <div class="logOut"> 
                     <a href="/admin/assignWork"> <small>Assign Work</small> </a>
                     <a href="/admin/view-employee"> <small>Employess</small> </a>
-                    <a href="/users/sign-up"> <small> Add Employee </small> </a>
+                    <a href="/admin/add-employee"> <small> Add Employee </small> </a>
                     <a href="/users/sign-out" > LogOut </a> 
                 </div>
             <%}else{%>    
