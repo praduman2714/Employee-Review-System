@@ -7,5 +7,6 @@ console.log(`router is loaded : {200}`);
 router.get('/' , homeController.home);
 router.use('/users' , require('./users'));
 router.use('/admin' , require('./admin'));
+router.use('/reviews', require('./reviews'));
 
 module.exports = router;

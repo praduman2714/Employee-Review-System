@@ -4,12 +4,13 @@ const Review = require('../models/review');
 module.exports.home = async function(req, res){
     try{
         if (!req.isAuthenticated()) {
-            console.log("not logged in");
+            // console.log("not logged in from homeController");
             return res.redirect('/users/sign-in');
         }
 
         let user = await User.findById(req.user.id);
         let review = await Review.find({ reviewer: req.user.id });
+        // console.log(review);
 
         let recipent = [];
         for(let i = 0; i<user.userToReview.length ; i++){
@@ -19,11 +20,12 @@ module.exports.home = async function(req, res){
 
         let reviews = [];
         for(let i = 0; i<review.length ; i++){
-            let reviewUser = await User.findById(review[i].id);
-            if(reviwUser != null){
+            let reviewUser = await User.findById(review[i].reviewed);
+            // console.log(review); 
+            if(reviewUser != null){
                 let currUser = {
                     name : reviewUser.name,
-                    content : review.content
+                    content : review[i].content
                 }
                 reviews.push(currUser);
             }
