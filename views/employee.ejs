@@ -23,7 +23,7 @@
               <td> <%= employes[i].password%> </td>
               <td> <%= employes[i].isAdmin%> </td>
               <td> 
-                  <a href="" class="btn btn-md">Delete</a>
+                  <a href="/admin/deleteEmployee/<%= employes[i]._id %>" class="btn btn-md">Delete</a>
               </td>
             </tr>  
           <%}%>

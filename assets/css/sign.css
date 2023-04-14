@@ -12,8 +12,8 @@
     border: 1px solid black;
 }
 
-.companyLogo{
-    background-color: aquamarine;
+.companyLogo{ 
+    background-color: rgba(23, 209, 178, 0.868);
     display: flex;
     justify-content: center;
     align-items:center;
@@ -60,6 +60,7 @@ form input{
 .submitButtons button{
     width: 100%;
     border-radius: 30px;
+    background-color: rgba(23, 209, 178, 0.868);
 }
 
 .extraStuff{

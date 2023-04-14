@@ -65,3 +65,55 @@ module.exports.setReviewrAndReviewe = async function(req, res){
     }
 
 }
+
+module.exports.newAdmin = async function(req, res){
+    try{
+        if(!req.isAuthenticated()){
+            console.log('Please LogIn');
+            // flash Messages
+            return res.redirect('/users/sign-in');
+        }
+    
+        if(req.user.isAdmin == false){
+            // flash messages
+            return res.redirect('/');
+        }
+        if(req.user.isAdmin){
+            let user = await Users.findById(req.body.selectedUser);
+            if(!user){
+                // flash Messages
+                return res.redirect('back');
+            }
+            user.isAdmin = "true";
+            user.save();
+            return res.redirect('back');
+        }
+        
+    }catch(err){
+        console.log(err);
+        return res.redirect('back');
+    }
+}
+
+
+module.exports.deleteEmployee = async function(req, res){
+    try{
+        if(!req.isAuthenticated()){
+            // flash Messages
+            return res.redirect('users/sign-in');
+        }
+
+        if(!req.user.isAdmin){
+            // flash Messages
+            return res.redirect('/');
+        }
+
+        let employee = await Users.deleteOne({_id : req.params.id});
+        // flash Messages
+        return res.redirect('back');
+
+    }catch(err){
+        console.log(err);
+        return res.redirect('back');
+    }
+}

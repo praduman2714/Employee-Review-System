@@ -16,4 +16,8 @@ router.post('/create' , userController.create);
 
 router.get('/sign-out', userController.destroySession);
 
+router.get('/forgetPassword', userController.forgetPasswordPage);
+router.post('/forgetPasswordLink' , userController.forgetPasswordLink);
+
+
 module.exports = router;
