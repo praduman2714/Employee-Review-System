@@ -11,25 +11,28 @@
             </div>
             <hr>
             
-            <h5>Set Reviewer</h5>
+              
 
-            <form action="admin/setReviewes" method="POST" class="mt-1 card-body">
-                <select class="form-select form-select-lg mb-3" aria-label="Default select example">
-                    <option selected>Sender</option>
-                    <% for(let i = 0; i<employe.length ; i++){ %>
-                        
-                        <option value= <%= i+1%> > <%= employe[i].name %> </option>
-                        
-                    <%}%>    
-                </select>
+            <form action="/admin/setReviewes" method="POST" class="mt-1 card-body">
+                <div>
+                    <h5>Set Reviewer</h5> 
+                    <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="sender">
+                        <option selected>Sender</option>
+                        <% for(let i = 0; i<employe.length ; i++){ %>
+                            
+                            <option value= <%= employe[i].id %> > <%= employe[i].name %> </option>
+                            
+                        <%}%>    
+                    </select>
+                </div>
 
                 <div class="reviewee">
                     <h5>Select the recipent Employee</h5>
-                    <select class="form-select form-select-lg mb-3" aria-label="Default select example">
+                    <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="reciver">
                         <option selected>Reviewer</option>
                         <% for(let i = 0; i<employe.length ; i++){ %>
                         
-                            <option value= <%= i+1%> > <%= employe[i].name %> </option>
+                            <option value= <%= employe[i].id %> > <%= employe[i].name %> </option>
                             
                         <%}%>
                     </select>
