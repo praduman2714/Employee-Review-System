@@ -14,13 +14,14 @@ module.exports.newReview = async (req, res) => {
             return res.redirect('/');
         }
 
-       
+       //console.log(recipient._id);
         for(let i = 0; i<req.user.userToReview.length ; i++){
             if (req.user.userToReview[i] == recipient.id) {
-                //console.log("Entered in the loop");
-                req.user.userToReview.splice(i, 1);
-                
+                // console.log("Entered in the loop");
+                let deleted = req.user.userToReview.splice(i, 1);
+                //console.log(deleted);
                 req.user.save();
+                //break;
             }
         }
 

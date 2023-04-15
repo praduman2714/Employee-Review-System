@@ -66,7 +66,7 @@ app.use(flashMiddleWare.setFlash);
 app.use('/' , require('./routes/index'));
 
 
-
+// Setting up the server at the given port
 app.listen(port, function(err){
     if(err){
         console.log("Error in running the app.");

@@ -7,7 +7,7 @@ module.exports.home = async function(req, res){
         // Checking for authorization
         if (!req.isAuthenticated()) {
             req.flash('error' , 'Please LogIn !');
-            // console.log("not logged in from homeController");
+            
             return res.redirect('/users/sign-in');
         }
         // Fetching the user and review from the form
@@ -35,7 +35,7 @@ module.exports.home = async function(req, res){
             }
         }
 
-        
+        // Render the page, with the variable made above , and pass them as the argument
         return res.render('home',{
             title : "ERS | HOME",
             recipent : recipent,
