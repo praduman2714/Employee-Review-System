@@ -4,7 +4,8 @@
   "description": "A employee review system, where a employe can review another employee. And there is a admin, who controll all these thing.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "nodemon index.js"
   },
   "author": "whiteWolf",
   "license": "ISC",
